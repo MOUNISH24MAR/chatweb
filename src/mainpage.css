@@ -1,0 +1,59 @@
+.main-hero {
+  overflow: hidden;
+  position: relative;
+}
+
+.bubble-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bubble-bg::before, .bubble-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: bubbleMove 12s infinite alternate;
+}
+
+.bubble-bg::before {
+  width: 400px;
+  height: 400px;
+  left: -100px;
+  top: 10%;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  animation-delay: 0s;
+}
+
+.bubble-bg::after {
+  width: 300px;
+  height: 300px;
+  right: -80px;
+  bottom: 10%;
+  background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+  animation-delay: 2s;
+}
+
+@keyframes bubbleMove {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-40px) scale(1.1); }
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+} 
