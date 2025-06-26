@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // Replace with your MongoDB connection string
-const MONGO_URI = 'mongodb://localhost:27017/chatweb';
+const MONGO_URI = 'mongodb+srv://mounishc23cse:.mouni.137@cluster0.pcbscbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
