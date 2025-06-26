@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BACKEND_URL } from "./config";
 import './mainpage.css';
 
 function Search() {
@@ -16,7 +17,7 @@ function Search() {
     setMessages([]);
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/search?email=${encodeURIComponent(email)}`);
+      const res = await fetch(`${BACKEND_URL}/api/auth/search?email=${encodeURIComponent(email)}`);
       const data = await res.json();
       if (res.ok) {
         setUser(data);
