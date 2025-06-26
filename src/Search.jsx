@@ -21,8 +21,10 @@ function Search() {
       const data = await res.json();
       if (res.ok) {
         setUser(data);
+      } else if (res.status === 404) {
+        setError("No such user exists. Please check the email or sign up first.");
       } else {
-        setError(data.message || "No such user exists");
+        setError(data.message || "An error occurred");
       }
     } catch (err) {
       setError("Network error");
