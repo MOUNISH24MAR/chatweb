@@ -54,7 +54,7 @@ router.get('/search', async (req, res) => {
     const { email } = req.query;
     if (!email) return res.status(400).json({ message: 'Email is required' });
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'No such user exists' });
+    if (!user) return res.json({ notFound: true, message: 'No such user exists' });
     res.json({ username: user.username, email: user.email });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });

@@ -19,10 +19,10 @@ function Search() {
     try {
       const res = await fetch(`${BACKEND_URL}/api/auth/search?email=${encodeURIComponent(email)}`);
       const data = await res.json();
-      if (res.ok) {
-        setUser(data);
-      } else if (res.status === 404) {
+      if (data.notFound) {
         setError("No such user exists. Please check the email or sign up first.");
+      } else if (res.ok) {
+        setUser(data);
       } else {
         setError(data.message || "An error occurred");
       }
@@ -63,7 +63,7 @@ function Search() {
               </form>
               {error && <div className="alert alert-danger mt-3">{error}</div>}
             </div>
-            {user && (
+            {user && !error && (
               <div className="card shadow-lg border-0 rounded-4 p-4 bg-white bg-opacity-75 animate__animated animate__fadeInUp animate__delay-2s">
                 <div className="d-flex align-items-center mb-3 justify-content-between">
                   <h4 className="fw-bold text-gradient mb-0">Chat with {user.username} ({user.email})</h4>
